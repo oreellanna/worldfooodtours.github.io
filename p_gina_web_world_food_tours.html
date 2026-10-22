@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Food Tours - Experiencias Gastronómicas Alrededor del Mundo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        amber: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                        },
+                        brand: {
+                            dark: '#121619',
+                            card: '#1a202c',
+                            accent: '#e65100',
+                            gold: '#f59e0b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-bg {
+            background: linear-gradient(rgba(18, 22, 25, 0.75), rgba(18, 22, 25, 0.92)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat fixed;
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100 font-sans antialiased">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-gray-950/80 backdrop-blur-md border-b border-gray-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-red-500 flex items-center justify-center text-white shadow-lg shadow-amber-500/20">
+                    <i data-lucide="utensils" class="w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-extrabold tracking-tight font-serif text-white">World Food <span class="text-amber-500">Tours</span></span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 font-medium text-sm text-gray-300">
+                <a href="#about" class="hover:text-amber-400 transition-colors">Nosotros</a>
+                <a href="#packages" class="hover:text-amber-400 transition-colors">Nuestros Tours</a>
+                <a href="#calculator" class="hover:text-amber-400 transition-colors">Cotizador</a>
+                <a href="#impact" class="hover:text-amber-400 transition-colors">Calidad Garantizada</a>
+            </div>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#packages" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-gray-950 font-bold px-5 py-2.5 rounded-full transition-all shadow-md hover:shadow-amber-500/20 text-sm">
+                    Explorar Paquetes
+                </a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="menu-btn" class="md:hidden text-gray-300 hover:text-white p-2">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="block py-2 text-gray-300 hover:text-amber-400">Nosotros</a>
+            <a href="#packages" class="block py-2 text-gray-300 hover:text-amber-400">Nuestros Tours</a>
+            <a href="#calculator" class="block py-2 text-gray-300 hover:text-amber-400">Cotizador</a>
+            <a href="#impact" class="block py-2 text-gray-300 hover:text-amber-400">Calidad Garantizada</a>
+            <a href="#packages" class="block w-full text-center bg-amber-500 text-gray-950 font-bold py-2.5 rounded-xl">Explorar Paquetes</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center pt-24 pb-16 px-4 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-sm font-semibold mb-6 backdrop-blur-sm animate-pulse">
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                <span>Turismo Gastronómico de Alta Gama</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold font-serif text-white tracking-tight leading-tight max-w-4xl mx-auto mb-6">
+                Descubre la cultura del mundo a través de sus <span class="gradient-text">Sabores Auténticos</span>
+            </h1>
+            
+            <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed mb-10">
+                Diseñamos viajes sensoriales inolvidables. Masterclasses con chefs locales, catas privadas de vinos, visitas a mercados ancestrales y restaurantes de alta cocina.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#packages" class="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold px-8 py-4 rounded-xl transition-all shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2">
+                    Ver Destinos Disponibles
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+                <a href="#about" class="w-full sm:w-auto bg-gray-800/80 hover:bg-gray-800 text-white font-medium px-8 py-4 rounded-xl border border-gray-700 backdrop-blur-sm transition-all flex items-center justify-center gap-2">
+                    Conócenos Más
+                </a>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto mt-20 pt-10 border-t border-gray-800/80">
+                <div>
+                    <p class="text-3xl font-extrabold text-amber-400 font-serif">5</p>
+                    <p class="text-xs text-gray-400 uppercase tracking-wider font-medium">Destinos Top</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-extrabold text-amber-400 font-serif">100%</p>
+                    <p class="text-xs text-gray-400 uppercase tracking-wider font-medium">Guiado por Expertos</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-extrabold text-amber-400 font-serif">240+</p>
+                    <p class="text-xs text-gray-400 uppercase tracking-wider font-medium">Viajeros Anuales</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-extrabold text-amber-400 font-serif">4.9 / 5</p>
+                    <p class="text-xs text-gray-400 uppercase tracking-wider font-medium">Satisfacción</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-24 bg-gray-900 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                
+                <div class="space-y-6">
+                    <div class="inline-flex items-center gap-2 text-amber-500 font-semibold text-sm uppercase tracking-wider">
+                        <i data-lucide="compass" class="w-4 h-4"></i>
+                        <span>Sobre World Food Tours</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-serif text-white">
+                        No solo viajamos, <span class="text-amber-400">saboreamos la historia</span> de cada país
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed">
+                        En <strong>World Food Tours</strong> somos una agencia especializada exclusivamente en el turismo gastronómico internacional. Creemos firmemente que la mejor manera de conectar con la identidad y raíces de una cultura es a través de sus fogones, mercados tradicionales y tradiciones culinarias.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        Nos encargamos de toda la logística: desde masterclasses privadas con chefs galardonados y catas maridaje dirigidas por sommeliers expertos, hasta accesos exclusivos a cavas subterráneas y puestos tradicionales con siglos de historia.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-xl bg-gray-800/50 border border-gray-700/50 flex gap-3 items-start">
+                            <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400">
+                                <i data-lucide="chef-hat" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-sm">Chefs & Sommeliers</h3>
+                                <p class="text-gray-400 text-xs mt-1">Acompañamiento especializado en cada destino.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-gray-800/50 border border-gray-700/50 flex gap-3 items-start">
+                            <div class="p-2 rounded-lg bg-amber-500/10 text-amber-400">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold text-sm">Experiencia VIP</h3>
+                                <p class="text-gray-400 text-xs mt-1">Grupos selectos y logística integral incluida.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 relative">
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" alt="Experiencia Gastronómica" class="rounded-2xl object-cover h-64 w-full shadow-lg border border-gray-800 hover:scale-105 transition-transform duration-300">
+                        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80" alt="Cata de Vino" class="rounded-2xl object-cover h-44 w-full shadow-lg border border-gray-800 hover:scale-105 transition-transform duration-300">
+                    </div>
+                    <div class="space-y-4 pt-8">
+                        <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80" alt="Plato Gourmet" class="rounded-2xl object-cover h-44 w-full shadow-lg border border-gray-800 hover:scale-105 transition-transform duration-300">
+                        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80" alt="Masterclass de Cocina" class="rounded-2xl object-cover h-64 w-full shadow-lg border border-gray-800 hover:scale-105 transition-transform duration-300">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section id="packages" class="py-24 bg-gray-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-500 font-semibold text-sm uppercase tracking-wider">Nuestras Rutas VIP</span>
+                <h2 class="text-3xl sm:text-5xl font-bold font-serif text-white mt-2">Paquetes Gastronómicos Exclusivos</h2>
+                <p class="text-gray-400 mt-4 text-base">
+                    Todos nuestros planes incluyen transporte local, experiencias gastronómicas completas, catas, insumos y guías certificados.
+                </p>
+            </div>
+
+            <!-- Packages Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Paquete 1: Argentina -->
+                <div class="bg-gray-900 rounded-3xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition-all duration-300 flex flex-col group hover:shadow-2xl hover:shadow-amber-500/10">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80" alt="Ruta del Asado Argentina" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-gray-950/80 backdrop-blur-md text-amber-400 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                            🇦🇷 Argentina
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-amber-500 text-gray-950 font-extrabold px-3 py-1 rounded-lg text-sm shadow-md">
+                            1 Día VIP
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Ruta del Asado & Maridaje Porteño</h3>
+                            <p class="text-gray-400 text-xs mt-2 leading-relaxed">Inmersión culinaria completa en Buenos Aires con enfoque en carnes de primera calidad y vinos emblemáticos.</p>
+                            
+                            <div class="mt-4 space-y-2 border-t border-gray-800 pt-4 text-xs text-gray-300">
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Masterclass de Asado Tradicional</div>
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Cena-Maridaje 5 Tiempos con Vino Malbec</div>
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Degustación & Show de Tango VIP</div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-gray-500 block">Precio por Persona</span>
+                                <span class="text-2xl font-black text-amber-400">$250 USD</span>
+                            </div>
+                            <button onclick="openBooking('Ruta del Asado & Maridaje Porteño', 250)" class="bg-gray-800 hover:bg-amber-500 hover:text-gray-950 text-white p-3 rounded-xl transition-colors">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paquete 2: México -->
+                <div class="bg-gray-900 rounded-3xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition-all duration-300 flex flex-col group hover:shadow-2xl hover:shadow-amber-500/10">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80" alt="Gastronomía Oaxaca México" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-gray-950/80 backdrop-blur-md text-amber-400 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                            🇲🇽 México
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-amber-500 text-gray-950 font-extrabold px-3 py-1 rounded-lg text-sm shadow-md">
+                            2 Días
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Sabores Ancestrales de Oaxaca & CDMX</h3>
+                            <p class="text-gray-400 text-xs mt-2 leading-relaxed">Descubre los secretos prehispánicos de la cocina mexicana, sus chiles, moles y bebidas tradicionales.</p>
+                            
+                            <div class="mt-4 space-y-2 border-t border-gray-800 pt-4 text-xs text-gray-300">
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Tour de Comida Callejera en Mercados</div>
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Taller de Mole Ancestral & Tortillas</div>
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Cata Artesanal de Mezcal & Traslados</div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-gray-500 block">Precio por Persona</span>
+                                <span class="text-2xl font-black text-amber-400">$320 USD</span>
+                            </div>
+                            <button onclick="openBooking('Sabores Ancestrales de Oaxaca & CDMX', 320)" class="bg-gray-800 hover:bg-amber-500 hover:text-gray-950 text-white p-3 rounded-xl transition-colors">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paquete 3: Francia -->
+                <div class="bg-gray-900 rounded-3xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition-all duration-300 flex flex-col group hover:shadow-2xl hover:shadow-amber-500/10">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Alta Cocina en París" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-gray-950/80 backdrop-blur-md text-amber-400 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                            🇫🇷 Francia
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-amber-500 text-gray-950 font-extrabold px-3 py-1 rounded-lg text-sm shadow-md">
+                            1 Día Gourmet
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Gastronomía & Alta Cocina en París</h3>
+                            <p class="text-gray-400 text-xs mt-2 leading-relaxed">La cúspide de la elegancia culinaria europea. Pastelería fina, quesos artesanales y cavas centenarias.</p>
+                            
+                            <div class="mt-4 space-y-2 border-t border-gray-800 pt-4 text-xs text-gray-300">
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Ruta de Pastelería Fina en Le Marais</div>
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Taller con Pastelero Certificado</div>
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Cata Vinos y Quesos en Cava Subterránea</div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-gray-500 block">Precio por Persona</span>
+                                <span class="text-2xl font-black text-amber-400">$380 USD</span>
+                            </div>
+                            <button onclick="openBooking('Gastronomía Colonial & Alta Cocina en París', 380)" class="bg-gray-800 hover:bg-amber-500 hover:text-gray-950 text-white p-3 rounded-xl transition-colors">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paquete 4: Perú -->
+                <div class="bg-gray-900 rounded-3xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition-all duration-300 flex flex-col group hover:shadow-2xl hover:shadow-amber-500/10">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?auto=format&fit=crop&w=800&q=80" alt="Gastronomía Peruana Cebiche" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-gray-950/80 backdrop-blur-md text-amber-400 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                            🇵🇪 Perú
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-amber-500 text-gray-950 font-extrabold px-3 py-1 rounded-lg text-sm shadow-md">
+                            2 Días
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Ruta Culinaria Inca & Sabores Andinos</h3>
+                            <p class="text-gray-400 text-xs mt-2 leading-relaxed">Sumérgete en la capital gastronómica de América del Sur, navegando desde Lima hasta los Andes.</p>
+                            
+                            <div class="mt-4 space-y-2 border-t border-gray-800 pt-4 text-xs text-gray-300">
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Masterclass de Cebiche & Pisco Sour</div>
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Visita a Mercados de Surquillo / San Pedro</div>
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Degustación de Cocina Andina Ancestral</div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-gray-500 block">Precio por Persona</span>
+                                <span class="text-2xl font-black text-amber-400">$200 USD</span>
+                            </div>
+                            <button onclick="openBooking('Ruta Culinaria de los Incas', 200)" class="bg-gray-800 hover:bg-amber-500 hover:text-gray-950 text-white p-3 rounded-xl transition-colors">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paquete 5: Japón -->
+                <div class="bg-gray-900 rounded-3xl overflow-hidden border border-gray-800 hover:border-amber-500/50 transition-all duration-300 flex flex-col group hover:shadow-2xl hover:shadow-amber-500/10 lg:col-span-1 border-amber-500/30">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80" alt="Sushi y Ramen Japón" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-gray-950/80 backdrop-blur-md text-amber-400 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                            🇯🇵 Japón
+                        </div>
+                        <div class="absolute bottom-4 right-4 bg-amber-500 text-gray-950 font-extrabold px-3 py-1 rounded-lg text-sm shadow-md">
+                            2 Días
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">Ruta Izakaya, Ramen & Alta Cocina Tokio</h3>
+                            <p class="text-gray-400 text-xs mt-2 leading-relaxed">Una travesía milenaria por el contraste entre los pasajes de ramen tradicionales y el arte del sushi supremo.</p>
+                            
+                            <div class="mt-4 space-y-2 border-t border-gray-800 pt-4 text-xs text-gray-300">
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Masterclass de Sushi en Tsukiji</div>
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Tour Nocturno por Izakayas Secreto</div>
+                                <div class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-amber-500 shrink-0"></i> Ceremonia del Té Matcha & Cata de Sake</div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-gray-500 block">Precio por Persona</span>
+                                <span class="text-2xl font-black text-amber-400">$420 USD</span>
+                            </div>
+                            <button onclick="openBooking('Ruta Izakaya, Ramen & Tokio', 420)" class="bg-gray-800 hover:bg-amber-500 hover:text-gray-950 text-white p-3 rounded-xl transition-colors">
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Calculator Section -->
+    <section id="calculator" class="py-20 bg-gray-900 border-t border-b border-gray-800">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gray-950 rounded-3xl p-8 sm:p-12 border border-amber-500/20 shadow-2xl relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="text-center max-w-2xl mx-auto mb-8">
+                    <span class="text-amber-500 font-semibold text-xs uppercase tracking-wider">Planifica tu Presupuesto</span>
+                    <h2 class="text-2xl sm:text-4xl font-bold font-serif text-white mt-1">Cotizador de Viaje Gastronómico</h2>
+                    <p class="text-gray-400 text-xs sm:text-sm mt-2">Selecciona el paquete de tu interés y ajusta la cantidad de viajeros para obtener una estimación instantánea.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider mb-2">Selecciona el Destino</label>
+                            <select id="calc-package" onchange="updateCalc()" class="w-full bg-gray-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500 text-sm">
+                                <option value="250">🇦🇷 Argentina - Ruta del Asado ($250 USD)</option>
+                                <option value="320">🇲🇽 México - Sabores de Oaxaca ($320 USD)</option>
+                                <option value="380">🇫🇷 Francia - Alta Cocina en París ($380 USD)</option>
+                                <option value="200">🇵🇪 Perú - Ruta Culinaria Inca ($200 USD)</option>
+                                <option value="420">🇯🇵 Japón - Izakaya & Ramen ($420 USD)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs font-semibold text-gray-300 uppercase tracking-wider">Número de Personas</label>
+                                <span id="calc-people-val" class="text-amber-400 font-bold text-sm">2 Viajeros</span>
+                            </div>
+                            <input id="calc-people" type="range" min="1" max="10" value="2" oninput="updateCalc()" class="w-full h-2 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-amber-500">
+                            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                <span>1 pers.</span>
+                                <span>5 pers.</span>
+                                <span>10 pers.</span>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-gray-900/60 border border-gray-800 text-xs text-gray-400 space-y-1">
+                            <p class="text-gray-300 font-semibold flex items-center gap-1"><i data-lucide="info" class="w-4 h-4 text-amber-500"></i> ¿Qué incluye esta cotización?</p>
+                            <p>• Masterclasses, guías locales bilingües y degustaciones VIP.</p>
+                            <p>• Todos los costos fijos, insumos y traslados internos garantizados.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900 p-6 sm:p-8 rounded-2xl border border-gray-800 flex flex-col justify-between space-y-6 text-center">
+                        <span class="text-xs font-bold uppercase tracking-wider text-gray-400">Total Proyectado del Tour</span>
+                        <div>
+                            <span id="calc-total" class="text-4xl sm:text-5xl font-extrabold text-amber-400 font-serif">$500</span>
+                            <span class="text-gray-400 text-xs block mt-1">USD (Impuestos e Insumos Incluidos)</span>
+                        </div>
+
+                        <button onclick="alertModal('¡Excelente elección! Te redirigiremos a un asesor de World Food Tours para confirmar disponibilidad.')" class="w-full bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-amber-500/20 text-sm">
+                            Reservar Esta Cotización
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Transparency / Financials -->
+    <section id="impact" class="py-20 bg-gray-950 text-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-amber-500 font-semibold text-xs uppercase tracking-wider">Excelencia Operativa</span>
+                <h2 class="text-3xl font-bold font-serif text-white mt-1">Calidad Garantizada & Estructura Transparente</h2>
+                <p class="text-gray-400 text-sm mt-2">Nuestras operaciones anuales están respaldadas por alianzas directas con productores locales y establecimientos galardonados.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gray-900/50 p-6 rounded-2xl border border-gray-800">
+                    <div class="p-3 bg-amber-500/10 rounded-xl text-amber-400 w-fit mb-4">
+                        <i data-lucide="award" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">Proveedores Certificados</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Asociaciones directas con bodegas de vino, chefs galardonados y maestros sommeliers en cada país para una experiencia 100% auténtica.</p>
+                </div>
+
+                <div class="bg-gray-900/50 p-6 rounded-2xl border border-gray-800">
+                    <div class="p-3 bg-amber-500/10 rounded-xl text-amber-400 w-fit mb-4">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">Grupos Reducidos</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Limitamos nuestros grupos para garantizar una atención personalizada, un ambiente intimo en las catas y comunicación fluida con los guías.</p>
+                </div>
+
+                <div class="bg-gray-900/50 p-6 rounded-2xl border border-gray-800">
+                    <div class="p-3 bg-amber-500/10 rounded-xl text-amber-400 w-fit mb-4">
+                        <i data-lucide="trending-up" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2">Solidez Operativa</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">Proyectamos más de 240 itinerarios guiados al año con un alto índice de satisfacción y retorno de nuestros viajeros gastronómicos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 border-t border-gray-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-amber-500 flex items-center justify-center text-gray-950">
+                    <i data-lucide="utensils" class="w-5 h-5"></i>
+                </div>
+                <span class="text-xl font-bold font-serif text-white">World Food <span class="text-amber-500">Tours</span></span>
+            </div>
+
+            <p class="text-xs text-gray-500 text-center">
+                © 2026 World Food Tours. Todos los derechos reservados. Especialistas en Experiencias Culinarias Internacionales.
+            </p>
+
+            <div class="flex gap-4 text-gray-400">
+                <a href="#" class="hover:text-amber-400 transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-amber-400 transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                <a href="#" class="hover:text-amber-400 transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 sm:p-8 max-w-md w-full relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <h3 class="text-xl font-bold text-white font-serif mb-1" id="modal-title">Reservar Tour</h3>
+            <p class="text-xs text-amber-400 font-semibold mb-6" id="modal-price"></p>
+
+            <form onsubmit="handleModalSubmit(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block text-gray-300 font-medium mb-1">Nombre Completo</label>
+                    <input type="text" required placeholder="Tu nombre" class="w-full bg-gray-950 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500">
+                </div>
+                <div>
+                    <label class="block text-gray-300 font-medium mb-1">Correo Electrónico</label>
+                    <input type="email" required placeholder="tu@email.com" class="w-full bg-gray-950 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500">
+                </div>
+                <div>
+                    <label class="block text-gray-300 font-medium mb-1">Fecha Estimada de Viaje</label>
+                    <input type="date" required class="w-full bg-gray-950 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-amber-500">
+                </div>
+                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-gray-950 font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-amber-500/20 text-sm mt-4">
+                    Confirmar Pre-Reserva
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast / Custom Message Box -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-amber-500 text-gray-950 font-semibold px-6 py-4 rounded-2xl shadow-xl hidden items-center gap-3 border border-amber-400">
+        <i data-lucide="check-circle" class="w-5 h-5"></i>
+        <span id="toast-message" class="text-xs sm:text-sm"></span>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Calculator function
+        function updateCalc() {
+            const pkgPrice = parseFloat(document.getElementById('calc-package').value);
+            const people = parseInt(document.getElementById('calc-people').value);
+            
+            document.getElementById('calc-people-val').innerText = `${people} Viajero${people > 1 ? 's' : ''}`;
+            const total = pkgPrice * people;
+            document.getElementById('calc-total').innerText = `$${total.toLocaleString('en-US')}`;
+        }
+
+        // Modal Logic
+        let currentPackage = '';
+        function openBooking(title, price) {
+            currentPackage = title;
+            document.getElementById('modal-title').innerText = `Reserva: ${title}`;
+            document.getElementById('modal-price').innerText = `Precio por persona: $${price} USD`;
+            const modal = document.getElementById('booking-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('booking-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function handleModalSubmit(e) {
+            e.preventDefault();
+            closeModal();
+            alertModal(`¡Gracias por tu interés en ${currentPackage}! Un asesor se pondrá en contacto contigo pronto para completar tu reserva.`);
+        }
+
+        function alertModal(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = msg;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
